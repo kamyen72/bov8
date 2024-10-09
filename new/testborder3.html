@@ -52,10 +52,10 @@
     #myDIV {
       position: absolute;
       height:35px;
-      left:13px;
+      left:5px;
       top:150px;
       margin-left:5px;
-      width: 89%;
+      min-width: 363px;
       background-color:#007E9F;
       border: 1px solid none;
       border-radius:10px 10px 0px 0px;
@@ -75,10 +75,10 @@
     #mySearchElements {
       position: absolute;
       height:250px;
-      left:13px;
+      left:5px;
       top:185px;
       margin-left:5px;
-      width: 89%;
+      min-width: 317px;
       background-color:#ffffff;
       border: 1px solid none;
       border-radius:0px 0px 0px 0px;
@@ -289,7 +289,7 @@
     #L1Area {
       position: absolute;
       top: 110px;
-      width:90%;
+/*      max-width: 363px;*/
       left: 0px;
       margin-left: 15px;
       display: inline-block;
@@ -301,7 +301,7 @@
     #L2Area {
       position: absolute;
       top: 110px;
-      width:90%;
+      
       left: 0px;
       margin-left: 15px;
       display: inline-block;
@@ -312,7 +312,7 @@
     #L3Area {
       position: absolute;
       top: 110px;
-      width:90%;
+/*      max-width: 363px;*/
       left: 0px;
       margin-left: 15px;
       display: inline-block;
@@ -323,7 +323,7 @@
     #L4Area {
       position: absolute;
       top: 110px;
-      width:90%;
+/*      max-width: 363px;*/
       left: 0px;
       margin-left: 15px;
       display: inline-block;
@@ -656,7 +656,7 @@
                   'Content-Type': 'application/json'
               },
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GenExcel_OverallL2",
+              url: "http://103.209.157.30:5106/API/GenExcel_OverallL2_V2",
               data: JSON.stringify({ "InputText": document.getElementById("jsondataL2").innerText }),
               dataType: "json",
               crossDomain: true,
@@ -760,13 +760,13 @@
 
       var closebuttleft = screen.width - 480;
 
-      document.getElementById("closebutton2").style.left = closebuttleft + "px";
-      document.getElementById("excelbutton2").style.left = closebuttleft + "px";
-      document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
-      document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+      // document.getElementById("closebutton2").style.left = closebuttleft + "px";
+      // document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+      // document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+      // document.getElementById("prevbutton2").style.left = closebuttleft + "px";
 
-      document.getElementById("copybutton2").style.left = closebuttleft + "px";
-      document.getElementById("printbutton2").style.left = closebuttleft + "px";      
+      // document.getElementById("copybutton2").style.left = closebuttleft + "px";
+      // document.getElementById("printbutton2").style.left = closebuttleft + "px";      
       getToday();
     })
   </script>
@@ -963,9 +963,17 @@
 
       if (uag.search("Firefox") != -1) {
         browsertype = "Firefox";
+
+        if ((uag.search("Android") != -1)) {
+          browsertype = "Android Firefox";
+        }
       }
       if ((uag.search("Chrome") != -1)) {
         browsertype = "Chrome";
+
+        if ((uag.search("Android") != -1)) {
+          browsertype = "Android Chrome";
+        }
       }
       if ((uag.search("Edg/") != -1)) {
         browsertype = "Edge";
@@ -976,9 +984,6 @@
       if ((uag.search("safari") != -1)) {
         browsertype = "Safari";
       }
-      if ((uag.search("Android") != -1)) {
-        browsertype = "Android";
-      }
       
       document.getElementById("browsertype").value = browsertype;
 
@@ -986,40 +991,81 @@
       output += document.getElementById("browsertype").value;
       document.getElementById("CheckingArea").innerHTML = output;
 
-      if (browsertype == "Android") {
+      if (browsertype == "Android Chrome" || browsertype == "Android Firefox") {
         // when on phone
-        document.getElementById("myDIV").style.top = "150px";
-        document.getElementById("mySearchElements").style.top = "185px";
-        document.getElementById("mySearchElements").style.height = "250px";
+        document.getElementById("myDIV").style.top = "205px";
+        document.getElementById("mySearchElements").style.top = "240px";
+        document.getElementById("mySearchElements").style.height = "255px";
 
-        document.getElementById("L1Area").style.top = "435px";
-        document.getElementById("L2Area").style.top = "435px";
-        document.getElementById("L3Area").style.top = "435px";
-        document.getElementById("L4Area").style.top = "435px";
+        document.getElementById("L1Area").style.top = "498px";
+        document.getElementById("L2Area").style.top = "498px";
+        document.getElementById("L3Area").style.top = "498px";
+        document.getElementById("L4Area").style.top = "498px";
 
-        document.getElementById("L1Area").style.maxHeight = "370px";
-        document.getElementById("L2Area").style.maxHeight = "350px";
-        document.getElementById("L3Area").style.maxHeight = "350px";
-        document.getElementById("L4Area").style.maxHeight = "350px";
+        document.getElementById("L1Area").style.marginLeft = "5px";
+        document.getElementById("L2Area").style.marginLeft = "5px";
+        document.getElementById("L3Area").style.marginLeft = "5px";
+        document.getElementById("L4Area").style.marginLeft = "5px";
 
-        document.getElementById("L1Area").style.maxWidth = "530px";
-        document.getElementById("L2Area").style.maxWidth = "530px";
-        document.getElementById("L3Area").style.maxWidth = "530px";
-        document.getElementById("L4Area").style.maxWidth = "530px";
+        document.getElementById("L1Area").style.maxHeight = "375px";
+        document.getElementById("L2Area").style.maxHeight = "355px";
+        document.getElementById("L3Area").style.maxHeight = "355px";
+        document.getElementById("L4Area").style.maxHeight = "355px";
+
+        document.getElementById("myDIV").style.maxWidth = "550px";
+        document.getElementById("mySearchElements").style.maxWidth = "550px";
+
+        document.getElementById("L1Area").style.maxWidth = "550px";
+        document.getElementById("L2Area").style.maxWidth = "550px";
+        document.getElementById("L3Area").style.maxWidth = "550px";
+        document.getElementById("L4Area").style.maxWidth = "550px";
+
+        document.getElementById("L1Area").style.width = "363px";
+        document.getElementById("L2Area").style.width = "363px";
+        document.getElementById("L3Area").style.width = "363px";
+        document.getElementById("L4Area").style.width = "363px";
+
+        document.getElementById("L1Area").style.overflow = "scroll";
+        document.getElementById("L2Area").style.overflow = "scroll";
+        document.getElementById("L3Area").style.overflow = "scroll";
+        document.getElementById("L4Area").style.overflow = "scroll";
 
         var copyrightleft = parseInt( window.innerWidth / 2) - 200;
         document.getElementById("copyright2").style.left = copyrightleft + "px";
         var hh = document.getElementById("L1Area").offsetHeight;
         var tt = document.getElementById("L1Area").offsetTop;
+        var cpt = hh + tt + 5;
 
         document.getElementById("copyright2").style.position = "absolute";
         document.getElementById("copyright2").style.display = "block";
-        document.getElementById("copyright2").style.top = window.innerHeight + "px";
+        document.getElementById("copyright2").style.top = cpt + "px";
+
+        var closebuttleft = document.getElementById("L1Area").offsetLeft + document.getElementById("L1Area").offsetWidth + 5;
+
+        document.getElementById("closebutton2").style.left = closebuttleft + "px";
+        document.getElementById("copybutton2").style.left = closebuttleft + "px";
+        document.getElementById("copybutton2").style.left = closebuttleft + "px";
+        document.getElementById("printbutton2").style.left = closebuttleft + "px"; 
+        document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+        document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+        document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+
+        document.getElementById("closebutton2").style.top = document.getElementById("L1Area").style.top + "px";
+        document.getElementById("copybutton2").style.top = document.getElementById("L1Area").style.top + 25 + "px";
+        document.getElementById("copybutton2").style.top = document.getElementById("L1Area").style.top + 50 + "px";
+        document.getElementById("printbutton2").style.top = document.getElementById("L1Area").style.top + 75 + "px";
+        document.getElementById("excelbutton2").style.top = document.getElementById("L1Area").style.top + 100 + "px";
+        document.getElementById("downloadbutton2").style.top = document.getElementById("L1Area").style.top + 125 + "px";
+        document.getElementById("prevbutton2").style.top = document.getElementById("L1Area").style.top + 150 + "px";
       }
       else {
         document.getElementById("myDIV").style.top = "0px";
+        document.getElementById("myDIV").style.maxWidth = "95%";
+        document.getElementById("myDIV").style.width = "95%";
         document.getElementById("mySearchElements").style.top = "40px";
         document.getElementById("mySearchElements").style.height = "90px";
+        document.getElementById("mySearchElements").style.maxWidth = "95%";
+        document.getElementById("mySearchElements").style.width = "95%";
 
         document.getElementById("L1Area").style.top = "135px";
         document.getElementById("L2Area").style.top = "135px";
@@ -1031,6 +1077,11 @@
         document.getElementById("L3Area").style.maxHeight = "570px";
         document.getElementById("L4Area").style.maxHeight = "570px";
 
+        document.getElementById("L1Area").style.maxWidth = "95%";
+        document.getElementById("L2Area").style.maxWidth = "95%";
+        document.getElementById("L3Area").style.maxWidth = "95%";
+        document.getElementById("L4Area").style.maxWidth = "95%";
+
         var copyrightleft = parseInt( window.innerWidth / 2) - 500;
         document.getElementById("copyright2").style.position = "absolute";
         document.getElementById("copyright2").style.left = copyrightleft + "px";
@@ -1041,6 +1092,22 @@
         document.getElementById("copyright2").style.display = "block";
         document.getElementById("copyright2").style.top = window.innerHeight + "px";
       }
+
+      // document.getElementById("myDIV").style.top = "0px";
+      // document.getElementById("mySearchElements").style.top = "40px";
+      // document.getElementById("L1Area").style.top = "135px";
+
+      // alert(browsertype);
+      var t1 = "myDIV top: " + document.getElementById("myDIV").style.top;
+      var t2 = "mySearchElements top: " + document.getElementById("mySearchElements").style.top;
+      var t3 = "L1Area top: " + document.getElementById("L1Area").style.top;
+
+      var w1 = "myDIV width:" + document.getElementById("myDIV").offsetWidth;
+      var w2 = "mySearchElements width:" + document.getElementById("mySearchElements").offsetWidth;
+      var w3 = "L1Area width:" + document.getElementById("L1Area").offsetWidth;
+
+      // alert(t1 + "\n" + t2 + "\n" + t3);
+      // alert(w1 + "\n" + w2 + "\n" + w3);
     }
   </script>
 
@@ -1225,15 +1292,38 @@
                   
                   document.getElementById("jsondata").innerText = '{ "ReportTitle": "Win/Lose Report by Game - Overall View (Level 1)", "Data" : ' + document.getElementById("jsondata").innerText + '}';
 
-                  checkbrowser();
+                  
 
                   document.getElementById("L1Area").innerHTML = txt;
+
+                  checkbrowser(); // setting after data is populated
+
+                  var closebuttleft = document.getElementById("L1Area").offsetLeft + document.getElementById("L1Area").offsetWidth + 5;
+
+                  document.getElementById("closebutton2").style.left = closebuttleft + "px";
+                  document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                  document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                  document.getElementById("printbutton2").style.left = closebuttleft + "px"; 
+                  document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+                  document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+                  document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+
+                  document.getElementById("closebutton2").style.top = document.getElementById("L1Area").style.top + "px";
+                  document.getElementById("copybutton2").style.top = document.getElementById("L1Area").style.top + 25 + "px";
+                  document.getElementById("copybutton2").style.top = document.getElementById("L1Area").style.top + 50 + "px";
+                  document.getElementById("printbutton2").style.top = document.getElementById("L1Area").style.top + 75 + "px";
+                  document.getElementById("excelbutton2").style.top = document.getElementById("L1Area").style.top + 100 + "px";
+                  document.getElementById("downloadbutton2").style.top = document.getElementById("L1Area").style.top + 125 + "px";
+                  document.getElementById("prevbutton2").style.top = document.getElementById("L1Area").style.top + 150 + "px";
+
+
                   document.getElementById("excelbutton2").setAttribute("onclick", "GenOverall_Excel_L1()");
 
                   document.getElementById("copybutton2").setAttribute("onclick", "CopyToClipboard('L1Area')"); // PrintContent
                   document.getElementById("printbutton2").setAttribute("onclick", "print('L1Area')");
 
                   var h = document.getElementById("L1Area").offsetHeight + 150;
+                  document.getElementById("L1Area").style.height = h + "px";
                   document.getElementById("HistoryL1").innerHTML = txt;
               },
               failure: function (response) {
@@ -1282,6 +1372,9 @@
           if (EndTime == "") {
             EndTime = "23:59:59";
           }
+
+          StartDate = StartDate + " " + StartTime;
+          EndDate = EndDate + " " + EndTime;
 
           if (CurrentPeriod != "") {
             GetCurrentPeriodDates(CurrentPeriod);
@@ -1476,6 +1569,32 @@
 
                   checkbrowser();
 
+                  var closebuttleft = document.getElementById("L2Area").offsetLeft + document.getElementById("L2Area").offsetWidth + 5;
+
+                  document.getElementById("closebutton2").style.left = closebuttleft + "px";
+                  document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                  document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                  document.getElementById("printbutton2").style.left = closebuttleft + "px"; 
+                  document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+                  document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+                  document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+
+                  document.getElementById("closebutton2").style.top = document.getElementById("L2Area").style.top + "px";
+                  document.getElementById("copybutton2").style.top = document.getElementById("L2Area").style.top + 25 + "px";
+                  document.getElementById("copybutton2").style.top = document.getElementById("L2Area").style.top + 50 + "px";
+                  document.getElementById("printbutton2").style.top = document.getElementById("L2Area").style.top + 75 + "px";
+                  document.getElementById("excelbutton2").style.top = document.getElementById("L2Area").style.top + 100 + "px";
+                  document.getElementById("downloadbutton2").style.top = document.getElementById("L2Area").style.top + 125 + "px";
+                  document.getElementById("prevbutton2").style.top = document.getElementById("L2Area").style.top + 150 + "px";
+
+                  var hh = document.getElementById("L2Area").offsetHeight;
+                  var tt = document.getElementById("L2Area").offsetTop;
+                  var cpt = hh + tt + 5;
+
+                  document.getElementById("copyright2").style.position = "absolute";
+                  document.getElementById("copyright2").style.display = "block";
+                  document.getElementById("copyright2").style.top = cpt + "px";
+
                   document.getElementById('prevbutton2').setAttribute("onclick", "showArea('L1')");
 
                   document.getElementById("excelbutton2").setAttribute("onclick", "GenOverall_Excel_L2()");
@@ -1605,6 +1724,32 @@
                 document.getElementById("L3Area").innerHTML = txt1 + txt;
 
                 checkbrowser();
+
+                var closebuttleft = document.getElementById("L3Area").offsetLeft + document.getElementById("L3Area").offsetWidth + 5;
+
+                document.getElementById("closebutton2").style.left = closebuttleft + "px";
+                document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                document.getElementById("printbutton2").style.left = closebuttleft + "px"; 
+                document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+                document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+                document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+
+                document.getElementById("closebutton2").style.top = document.getElementById("L3Area").style.top + "px";
+                document.getElementById("copybutton2").style.top = document.getElementById("L3Area").style.top + 25 + "px";
+                document.getElementById("copybutton2").style.top = document.getElementById("L3Area").style.top + 50 + "px";
+                document.getElementById("printbutton2").style.top = document.getElementById("L3Area").style.top + 75 + "px";
+                document.getElementById("excelbutton2").style.top = document.getElementById("L3Area").style.top + 100 + "px";
+                document.getElementById("downloadbutton2").style.top = document.getElementById("L3Area").style.top + 125 + "px";
+                document.getElementById("prevbutton2").style.top = document.getElementById("L3Area").style.top + 150 + "px";
+
+                var hh = document.getElementById("L3Area").offsetHeight;
+                var tt = document.getElementById("L3Area").offsetTop;
+                var cpt = hh + tt + 5;
+
+                document.getElementById("copyright2").style.position = "absolute";
+                document.getElementById("copyright2").style.display = "block";
+                document.getElementById("copyright2").style.top = cpt + "px";
 
                 document.getElementById('prevbutton2').setAttribute("onclick", "showArea('L2')");
                 document.getElementById("excelbutton2").setAttribute("onclick", "GenOverall_Excel_L3()");
@@ -1778,6 +1923,32 @@
 
                 checkbrowser();
 
+                var closebuttleft = document.getElementById("L4Area").offsetLeft + document.getElementById("L4Area").offsetWidth + 5;
+
+                document.getElementById("closebutton2").style.left = closebuttleft + "px";
+                document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                document.getElementById("copybutton2").style.left = closebuttleft + "px";
+                document.getElementById("printbutton2").style.left = closebuttleft + "px"; 
+                document.getElementById("excelbutton2").style.left = closebuttleft + "px";
+                document.getElementById("downloadbutton2").style.left = closebuttleft + "px";
+                document.getElementById("prevbutton2").style.left = closebuttleft + "px";
+
+                document.getElementById("closebutton2").style.top = document.getElementById("L4Area").style.top + "px";
+                document.getElementById("copybutton2").style.top = document.getElementById("L4Area").style.top + 25 + "px";
+                document.getElementById("copybutton2").style.top = document.getElementById("L4Area").style.top + 50 + "px";
+                document.getElementById("printbutton2").style.top = document.getElementById("L4Area").style.top + 75 + "px";
+                document.getElementById("excelbutton2").style.top = document.getElementById("L4Area").style.top + 100 + "px";
+                document.getElementById("downloadbutton2").style.top = document.getElementById("L4Area").style.top + 125 + "px";
+                document.getElementById("prevbutton2").style.top = document.getElementById("L4Area").style.top + 150 + "px";
+
+                var hh = document.getElementById("L4Area").offsetHeight;
+                var tt = document.getElementById("L4Area").offsetTop;
+                var cpt = hh + tt + 5;
+
+                document.getElementById("copyright2").style.position = "absolute";
+                document.getElementById("copyright2").style.display = "block";
+                document.getElementById("copyright2").style.top = cpt + "px";
+                
                 document.getElementById('prevbutton2').setAttribute("onclick", "showArea('L3')");
                 document.getElementById("excelbutton2").setAttribute("onclick", "GenOverall_Excel_L4()");
 

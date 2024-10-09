@@ -621,7 +621,7 @@
                 'Content-Type': 'application/json'
             },
             type: "POST",
-            url: "http://103.209.157.30:5106/API/GenExcel_OverallL1",
+            url: "http://localhost:5106/API/GenExcel_OverallL1",
             data: JSON.stringify({ "InputText": document.getElementById("jsondata").innerText }),
             dataType: "json",
             crossDomain: true,
@@ -632,7 +632,7 @@
                 var converted = JSON.parse(response);
                 console.log("converted: " + converted[0].FileName);
 
-                document.getElementById("downloadbutton2").href = "http://103.209.157.30:5106/ExcelFiles/" + converted[0].FileName;
+                document.getElementById("downloadbutton2").href = "http://localhost:5106/ExcelFiles/" + converted[0].FileName;
                 document.getElementById("downloadbutton2").style.display = "block";
             },
             failure: function (response) {
@@ -656,14 +656,14 @@
                   'Content-Type': 'application/json'
               },
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GenExcel_OverallL2",
+              url: "http://localhost:5106/API/GenExcel_OverallL2",
               data: JSON.stringify({ "InputText": document.getElementById("jsondataL2").innerText }),
               dataType: "json",
               crossDomain: true,
               success: function (response) {
                   var converted = JSON.parse(response);
 
-                  document.getElementById("downloadbutton2").href = "http://103.209.157.30:5106/ExcelFiles/" + converted[0].FileName;
+                  document.getElementById("downloadbutton2").href = "http://localhost:5106/ExcelFiles/" + converted[0].FileName;
                   document.getElementById("downloadbutton2").style.display = "block";
               },
               failure: function (response) {
@@ -686,7 +686,7 @@
                   'Content-Type': 'application/json'
               },
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GenExcel_OverallL3",
+              url: "http://localhost:5106/API/GenExcel_OverallL3",
               data: JSON.stringify({ "InputText": document.getElementById("jsondataL3").innerText }),
               dataType: "json",
               crossDomain: true,
@@ -697,7 +697,7 @@
                   var converted = JSON.parse(response);
                   console.log("converted: " + converted[0].FileName);
 
-                  document.getElementById("downloadbutton2").href = "http://103.209.157.30:5106/ExcelFiles/" + converted[0].FileName;
+                  document.getElementById("downloadbutton2").href = "http://localhost:5106/ExcelFiles/" + converted[0].FileName;
                   document.getElementById("downloadbutton2").style.display = "block";
               },
               failure: function (response) {
@@ -720,7 +720,7 @@
                   'Content-Type': 'application/json'
               },
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GenExcel_OverallL4",
+              url: "http://localhost:5106/API/GenExcel_OverallL4",
               data: JSON.stringify({ "InputText": document.getElementById("jsondataL4").innerText }),
               dataType: "json",
               crossDomain: true,
@@ -730,7 +730,7 @@
 
                   var converted = JSON.parse(response);
                   console.log("converted: " + converted[0].FileName);
-                  document.getElementById("downloadbutton2").href = "http://103.209.157.30:5106/ExcelFiles/" + converted[0].FileName;
+                  document.getElementById("downloadbutton2").href = "http://localhost:5106/ExcelFiles/" + converted[0].FileName;
                   document.getElementById("downloadbutton2").style.display = "block";
                   console.log(document.getElementById("downloadlink2").href);
               },
@@ -819,7 +819,7 @@
     function getYesterday(){
       $.ajax({
             type: "POST",
-            url: "http://103.209.157.30:5106/API/GetYesterday",
+            url: "http://localhost:5106/API/GetYesterday",
             data: JSON.stringify({ "InputText": "" }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -851,7 +851,7 @@
       alert("get7Days");
       $.ajax({
             type: "POST",
-            url: "http://103.209.157.30:5106/API/Get7Days",
+            url: "http://localhost:5106/API/Get7Days",
             data: JSON.stringify({ "InputText": "" }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -879,7 +879,7 @@
     function get14Days(){
       $.ajax({
             type: "POST",
-            url: "http://103.209.157.30:5106/API/Get14Days",
+            url: "http://localhost:5106/API/Get14Days",
             data: JSON.stringify({ "InputText": "" }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1076,7 +1076,7 @@
       function GenOverallReport() {
           document.getElementById("CheckingArea").style.display = "none";
 
-          var txt = "<img src='http://103.209.157.30:5106/clock.gif' />";
+          var txt = "<img src='http://localhost:5106/clock.gif' />";
           document.getElementById("L1Area").style.textAlign = "center";
           document.getElementById("L1Area").innerHTML = txt;
 
@@ -1118,7 +1118,7 @@
 
           $.ajax({
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GetOverallReport",
+              url: "http://localhost:5106/API/GetOverallReport",
               data: JSON.stringify({ "StartDate": StartDate, "EndDate": EndDate, "CurrentPeriod": CurrentPeriod, "UserName": UserName, "BetType": BetType, "StartTime": StartTime, "EndTime": EndTime }),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
@@ -1252,7 +1252,7 @@
           document.getElementById("CheckingArea").style.display = "none";
 
           document.getElementById("L2Area").style.textAlign = "center";
-          var txt = "<img src='http://103.209.157.30:5106/clock.gif' />";
+          var txt = "<img src='http://localhost:5106/clock.gif' />";
           document.getElementById("L2Area").innerHTML = txt;
 
           document.getElementById("L1Area").style.display = "none";
@@ -1291,7 +1291,7 @@
           
           $.ajax({
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GetOverallByBetType",
+              url: "http://localhost:5106/API/GetOverallByBetType",
               data: JSON.stringify({ "BetType": BetType, "StartDate": StartDate, "EndDate": EndDate, "CurrentPeriod": CurrentPeriod, "UserName": UserName, "StartTime": StartTime, "EndTime": EndTime }),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
@@ -1507,7 +1507,7 @@
     function DrillByUserName(me) {
         document.getElementById("CheckingArea").style.display = "none";
 
-        var txt = "<img src='http://103.209.157.30:5106/clock.gif' />";
+        var txt = "<img src='http://localhost:5106/clock.gif' />";
         document.getElementById("L3Area").style.textAlign = "center";
         document.getElementById("L3Area").innerHTML = txt;
 
@@ -1533,7 +1533,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://103.209.157.30:5106/API/GetOverallByUser",
+            url: "http://localhost:5106/API/GetOverallByUser",
             data: JSON.stringify({ "BetType": BetType, "UserName": UserName, "StartDate": StartDate, "EndDate": EndDate , "CurrentPeriod": CurrentPeriod}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1634,7 +1634,7 @@
     function DrillByTicket(me) {
         document.getElementById("CheckingArea").style.display = "none";
 
-        var txt = "<img src='http://103.209.157.30:5106/clock.gif' />";
+        var txt = "<img src='http://localhost:5106/clock.gif' />";
         document.getElementById("L4Area").style.textAlign = "center";
         document.getElementById("L4Area").innerHTML = txt;
 
@@ -1659,7 +1659,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://103.209.157.30:5106/API/DrillOverall_Level4",
+            url: "http://localhost:5106/API/DrillOverall_Level4",
             data: JSON.stringify({ "TicketNo": TicketNo, "Account": SelectedUserName, "BetType": BetType, "StartDate": StartDate, "EndDate": EndDate ,"CurrentPeriod": CurrentPeriod}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -1950,7 +1950,7 @@
       if (cp != "") {
         $.ajax({
               type: "POST",
-              url: "http://103.209.157.30:5106/API/GetCurrentPeriodDateRange",
+              url: "http://localhost:5106/API/GetCurrentPeriodDateRange",
               data: JSON.stringify({ "InputText" : cp}),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
@@ -2010,7 +2010,7 @@
       </div>
 
       <div style="display: inline-block;">
-        <a onclick="GenOverallReport()" id="btnOverall" style="opacity: 0;"><img style="opacity: 0;" src='http://103.209.157.30:5106/report.png' class="btnOverall"></a>
+        <a onclick="GenOverallReport()" id="btnOverall" style="opacity: 0;"><img style="opacity: 0;" src='http://localhost:5106/report.png' class="btnOverall"></a>
         <div style="width:10px;display:inline-block;opacity: 0;"></div>
       </div> 
 
@@ -2062,7 +2062,7 @@
 
     </div>
 </div>
-<a id="burgerlink" class="burger"><img onclick="hidemenu()" id="burgerimg" class="burger" src="http://103.209.157.30:5106/cross.png"></a>
+<a id="burgerlink" class="burger"><img onclick="hidemenu()" id="burgerimg" class="burger" src="http://localhost:5106/cross.png"></a>
 <div id="CheckingArea">.</div>
 <div id="L1Area" class="container-fluid col-md-12 col-md-12"></div>
 <div id="L2Area" class="container-fluid col-md-12 col-md-12"></div>
@@ -2107,11 +2107,11 @@
 <div id="jsondataL3" style="display:none;"></div>
 <div id="jsondataL4" style="display:none;"></div>
 <!-- <a id="downloadlink2" href="" target="_blank" style="display:none;" download>
-    <img src="http://103.209.157.30:5106/red_download.jpg" style="width:30px;height:30px;border-style: solid; border-width: 1px; border-color:grey;">
+    <img src="http://localhost:5106/red_download.jpg" style="width:30px;height:30px;border-style: solid; border-width: 1px; border-color:grey;">
 </a>
- --><button id="prevbuttonL2" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL2()"><img id='excelimg' src='http://103.209.157.30:5106/prev.png' style="width: 20px; height: 20px;" /></button>
-<button id="prevbuttonL3" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL3()"><img id='excelimg' src='http://103.209.157.30:5106/prev.png' style="width: 20px; height: 20px;" /></button>
-<button id="prevbuttonL4" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL4()"><img id='excelimg' src='http://103.209.157.30:5106/prev.png' style="width: 20px; height: 20px;" /></button>
+ --><button id="prevbuttonL2" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL2()"><img id='excelimg' src='http://localhost:5106/prev.png' style="width: 20px; height: 20px;" /></button>
+<button id="prevbuttonL3" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL3()"><img id='excelimg' src='http://localhost:5106/prev.png' style="width: 20px; height: 20px;" /></button>
+<button id="prevbuttonL4" style="display: none; font-size:26px; float:right;" onclick="ShowPrevPageL4()"><img id='excelimg' src='http://localhost:5106/prev.png' style="width: 20px; height: 20px;" /></button>
 <br />
 <div id="ReportJSON2"></div>
 <input type="text" id="TempPrice" value="" style='display:none;' /><input type="text" id="TempDiscPrice" value="" style='display:none;' /><input type="text" id="TempWinMoney" value="" style='display:none;' />

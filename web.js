@@ -13,12 +13,12 @@ app.use(bodyParser.json());
 const env =process.argv[2]
 if (env=='dev'){
     app.use(express.static(path.join(__dirname)));
-    console.log('http://localhost:44309');
+    console.log('http://localhost:44333');
 }else{
     app.use(express.static(path.join(__dirname,'build')));
 }
 
 //設定port位置
-let port = 44309;
+let port = 44333;
 // 監聽 port
 app.listen(port);

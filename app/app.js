@@ -100,8 +100,8 @@ app.config(['$routeProvider', '$translateProvider', 'localStorageServiceProvider
     // });
 
     $routeProvider.when("/winLoseReportByGame", {
-        controller: "testborder2Controller",
-        templateUrl: "./new/testborder2.html",
+        controller: "testborder3Controller",
+        templateUrl: "./new/testborder3.html",
         allowAnonymous: true
     });
 
